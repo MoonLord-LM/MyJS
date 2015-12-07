@@ -1,4 +1,4 @@
-//JSON解析功能
+﻿//JSON解析功能
 //代码来源于开源库：json2.js 2015-05-03
 //保证在IE8等低版本浏览器中可以使用：JSON.parse()和JSON.stringify()
 "object" !== typeof JSON && (JSON = {});
@@ -26,11 +26,11 @@ function html_decode(text) {
     return text.replace(/&amp;/g, '&').replace(/&quot;/g, '\"').replace(/&#39;/g, '\'').replace(/&lt;/g, '<').replace(/&gt;/g, '>');
 }
 //JSON编码、解码功能
-function json_encode(text) {
-    return JSON.parse(text);
-}
-function json_decode(json) {
+function json_encode(json) {
     return JSON.stringify(json);
+}
+function json_decode(text) {
+    return JSON.parse(text);
 }
 //URL编码、解码功能
 function url_encode(text) {
