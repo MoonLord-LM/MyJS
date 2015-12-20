@@ -1,6 +1,22 @@
-﻿//JSON解析功能
-//代码来源于开源库：json2.js 2015-05-03
-//保证在IE8等低版本浏览器中可以使用：JSON.parse()和JSON.stringify()
+//Console调试、记录功能（保证在所有浏览器中都可以使用：console.log等函数）
+(function () {
+    var noop = function noop() { };
+    if (!window.console) {
+        window.console = {};
+        var console = window.console;
+        if (!console.memory) {
+            console.memory = {};
+        }
+        var funcs = ['assert', 'clear', 'count', 'debug', 'dir', 'dirxml', 'error', 'exception', 'group', 'groupCollapsed', 'groupEnd', 'info', 'log', 'markTimeline', 'profile', 'profileEnd', 'table', 'time', 'timeEnd', 'timeStamp', 'trace', 'warn'];
+        for (var i = 0, j = funcs.length; i < j; i++) {
+            var func = funcs[i];
+            if (!console[func]) {
+                console[func] = noop;
+            }
+        }
+    }
+})();
+//JSON编码、解码功能（代码来源于开源库：json2.js 2015-05-03，保证在所有浏览器中都可以使用：JSON.parse和JSON.stringify）
 "object" !== typeof JSON && (JSON = {});
 (function () {
     function m(a) { return 10 > a ? "0" + a : a } function r() { return this.valueOf() } function t(a) { u.lastIndex = 0; return u.test(a) ? '"' + a.replace(u, function (a) { var c = w[a]; return "string" === typeof c ? c : "\\u" + ("0000" + a.charCodeAt(0).toString(16)).slice(-4) }) + '"' : '"' + a + '"' } function p(a, l) {
@@ -16,9 +32,7 @@ function (a, l, c) { var d; n = e = ""; if ("number" === typeof c) for (d = 0; d
 0; v.test(a) && (a = a.replace(v, function (a) { return "\\u" + ("0000" + a.charCodeAt(0).toString(16)).slice(-4) })); if (x.test(a.replace(y, "@").replace(z, "]").replace(A, ""))) return d = eval("(" + a + ")"), "function" === typeof e ? c({ "": d }, "") : d; throw new SyntaxError("JSON.parse");
 })
 })();
-//HTML编码、解码功能
-//代码性能测试：http://jsperf.com/htmlencoderegex/17
-//将JS变量输出到html之前，需要使用html_encode进行转码，防止XSS攻击
+//HTML编码、解码功能（将JS变量输出到html之前，需要使用html_encode进行转码，防止XSS攻击）
 function html_encode(html) {
     return html.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/'/g, '&#39;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 }
