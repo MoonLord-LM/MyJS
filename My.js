@@ -63,9 +63,9 @@ function url_decode(text) {
             return s;
         }
         var pads = 0;
-        if (s.charAt(len - 1) === base64.map[64]) {
+        if (s.charAt(len - 1) === map[64]) {
             pads++;
-            if (s.charAt(len - 2) === base64.map[64]) {
+            if (s.charAt(len - 2) === map[64]) {
                 pads++;
             }
             len -= 4;
@@ -77,11 +77,11 @@ function url_decode(text) {
         }
         switch (pads) {
             case 1:
-                b = (map.indexOf(s.charAt(i)) << 18) | (map.indexOf(s.charAt(i)) << 12) | (map.indexOf(s.charAt(i)) << 6);
+                b = (map.indexOf(s.charAt(i)) << 18) | (map.indexOf(s.charAt(i + 1)) << 12) | (map.indexOf(s.charAt(i + 2)) << 6) | map.indexOf(s.charAt(i + 3));
                 x.push(String.fromCharCode(b >> 16, (b >> 8) & 0xff));
                 break;
             case 2:
-                b = (map.indexOf(s.charAt(i)) << 18) | (map.indexOf(s.charAt(i)) << 12);
+                b = (map.indexOf(s.charAt(i)) << 18) | (map.indexOf(s.charAt(i + 1)) << 12) | (map.indexOf(s.charAt(i + 2)) << 6) | map.indexOf(s.charAt(i + 3));
                 x.push(String.fromCharCode(b >> 16));
                 break;
         }
