@@ -32,7 +32,7 @@
         var method = methods[i];
         if (typeof console[method] === 'undefined') {
             console[method] = noop;
-            console.info('MyJS：添加 console.' + method + ' 方法支持');
+            //console.info('MyJS：添加 console.' + method + ' 方法支持');
         }
     }
 })();
@@ -50,27 +50,27 @@
     var noop = function () { };
     if (typeof window['onpopstate'] === 'undefined') {
         window['onpopstate'] = noop;
-        console.info('MyJS：添加 window.onpopstate 方法支持');
+        //console.info('MyJS：添加 window.onpopstate 方法支持');
     }
     if (typeof history['scrollRestoration'] === 'undefined') {
         history['scrollRestoration'] = empty;
-        console.info('MyJS：添加 history.scrollRestoration 属性支持');
+        //console.info('MyJS：添加 history.scrollRestoration 属性支持');
     }
     if (typeof history['state'] === 'undefined') {
         history['state'] = empty;
-        console.info('MyJS：添加 history.state 属性支持');
+        //console.info('MyJS：添加 history.state 属性支持');
     }
     var zero = 0;
     if (typeof history['length'] === 'undefined') {
         history['length'] = zero;
-        console.info('MyJS：添加 history.length 属性支持');
+        //console.info('MyJS：添加 history.length 属性支持');
     }
     var methods = ['back', 'constructor', 'forward', 'go', 'pushState', 'replaceState'];
     for (var i = 0, j = methods.length; i < j; i++) {
         var method = methods[i];
         if (typeof history[method] === 'undefined') {
             history[method] = noop;
-            console.info('MyJS：添加 history.' + method + ' 方法支持');
+            //console.info('MyJS：添加 history.' + method + ' 方法支持');
         }
     }
 })();
