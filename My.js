@@ -185,3 +185,11 @@ function json_encode(json) {
 function json_decode(text) {
     return JSON.parse(text);
 }
+
+// 隐藏和显示知乎的 Header
+function zhihu_header_hide() {
+    document.getElementsByClassName("AppHeader")[0].style.display = 'none';
+}
+function zhihu_header_show() {
+    document.getElementsByClassName("AppHeader")[0].style.display = '';
+}
